@@ -25,3 +25,8 @@ def load_model_and_predict_salary(experience: int):
 def common_response(success: bool = True, response_code: int = 200, data=None):
     json = jsonify(success=success, status=response_code, data=data)
     return json
+
+
+if __name__ == '__main__':
+    # app.debug = True
+    app.run(host="0.0.0.0")
