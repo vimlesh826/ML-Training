@@ -28,5 +28,5 @@ def common_response(success: bool = True, response_code: int = 200, data=None):
 
 
 if __name__ == '__main__':
-    # app.debug = True
-    app.run(host="0.0.0.0")
+    from waitress import serve
+    serve(app, host="0.0.0.0", port=8080)
