@@ -10,8 +10,11 @@ def predict_salary():
     predicted_salary = load_model_and_predict_salary(input_json['experience'])
     if predicted_salary is None:
         predicted_salary = 0
-    dict_to_return = {'salary': predicted_salary}
     return common_response(True, 200, predicted_salary)
+
+@app.route('/')
+def connected():
+    return "Working great ;-)"
 
 
 def load_model_and_predict_salary(experience: int):
@@ -23,10 +26,11 @@ def load_model_and_predict_salary(experience: int):
 
 
 def common_response(success: bool = True, response_code: int = 200, data=None):
-    json = jsonify(success=success, status=response_code, data=data)
-    return json
+    response = jsonify(success=success, status=response_code, data=data)
+    return response
 
 
 if __name__ == '__main__':
-    from waitress import serve
-    serve(app, host="0.0.0.0", port=8080)
+    # from waitress import serve
+    # serve(app, host="0.0.0.0", port=8080)
+    app.run(host="0.0.0.0", port=8080)
