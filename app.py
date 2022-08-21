@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import pickle
 
 application = Flask('ML')
@@ -15,7 +15,8 @@ def predict_salary():
 
 @application.route('/')
 def connected():
-    return "Working great ;-)"
+    return render_template('index.html')
+    # return "Working great ;-)"
 
 
 def load_model_and_predict_salary(experience: int):
